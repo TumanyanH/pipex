@@ -1,32 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   helpers.c                                          :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: htumanya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/23 15:53:42 by htumanya          #+#    #+#             */
-/*   Updated: 2021/10/27 16:34:11 by htumanya         ###   ########.fr       */
+/*   Created: 2021/01/25 19:11:52 by htumanya          #+#    #+#             */
+/*   Updated: 2021/10/27 15:59:57 by htumanya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/pipex.h"
+#include "../pipex.h"
 
-void	ft_putstr(char *string)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	int	i;
+	const unsigned char *str1;
+	const unsigned char *str2;
 
-	i = 0;
-	while (string[i] != '\0')
+	str1 = (const unsigned char *)s1;
+	str2 = (const unsigned char *)s2;
+	if (n == 0)
+		return (0);
+	while (n)
 	{
-		write(1, &string[i], 1);
-		i++;
+		if (*str1 != *str2)
+			return ((*str1 > *str2) ? 1 : -1);
+		++str1;
+		++str2;
+		--n;
 	}
-}
-
-int	ft_exit(int ret, char *err)
-{
-	if (err)
-		perror(err);
-	exit(ret);
+	return (0);
 }

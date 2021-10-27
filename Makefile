@@ -16,7 +16,6 @@ RM = rm -rf
 all : $(NAME)
 
 $(NAME) : $(OBJS)
-	echo $(PS_FILES)
 	$(CC) $(OBJS) -o ${NAME}
 
 clean : 
